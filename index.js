@@ -7,12 +7,17 @@ const app = express();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+//Including EJS
+app.set("view engine", "ejs");
+
 app.get("/", (req, res) => {
   res.send("Hei Maailma!");
 })
 
-app.get("/guestbook", (req, res) => {
-  res.send(makeTable());
+const table = makeTable;
+
+app.get("/guestbook", function(req, res) {
+  res.render("pages/guestbook", {table: table});
 })
 
 app.use("/newmessage", express.static("./newMessage"));
@@ -51,5 +56,7 @@ function makeTable() {
   ))
   .reduce((prevValue, curValue) => prevValue + curValue);
 
-  return `<table><thead><tr><td>ID</td><td>Name</td><td>Country</td><td>Date</td><td>Message</td></tr></thead><tbody>${guestsFormat}</tbody></table>`;
+  return (`<table class="table"><thead class="thead-dark"><tr><th>ID</td><th>Name</th><th>Country</th><th>Date</th><th>Message</th></tr></thead><tbody>
+  ${guestsFormat}
+  </tbody></table>`);
 }
