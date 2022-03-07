@@ -10,6 +10,7 @@ app.use(express.json());
 //Including EJS
 app.set("view engine", "ejs");
 
+// Getting the right port dynamically
 const PORT = process.env.PORT || 8000;
 
 // Home Page
@@ -35,41 +36,13 @@ app.get("/ajaxmessage", (req, res) => {
 
 // POST route for Ajax Message Page
 app.post("/addAjaxMessage", (req, res) => {
-  const newGuestObject = {
-    id: guests.length + 1,
-    username: req.body.name,
-    country: req.body.country,
-    date: Date(),
-    message: req.body.message
-  }
-  guests.push(newGuestObject);
-
-  const guestsString = JSON.stringify(guests);
-
-  fs.writeFile("guests.json", guestsString, (err) => {
-    if (err) throw err;
-    console.log("Guest has been saved!");
-  })
+  addNewGuest(req.body.name, req.body.country, req.body.message);
   res.send(makeTable());
 })
 
 // POST route for New Message Page
 app.post("/addNewMessage", (req, res) => {
-  const newGuestObject = {
-    id: guests.length,
-    username: req.body.name,
-    country: req.body.country,
-    date: Date(),
-    message: req.body.message
-  }
-  guests.push(newGuestObject);
-
-  const guestsString = JSON.stringify(guests);
-
-  fs.writeFile("guests.json", guestsString, (err) => {
-    if (err) throw err;
-    console.log("Guest has been saved!");
-  })
+  addNewGuest(req.body.name, req.body.country, req.body.message);
   res.redirect("/guestbook");
 })
 
@@ -89,4 +62,23 @@ function makeTable() {
   return (`<table class="table"><thead class="thead-dark"><tr><th>ID</td><th>Name</th><th>Country</th><th>Date</th><th>Message</th></tr></thead><tbody>
   ${guestsFormat}
   </tbody></table>`);
+}
+
+//Helper function to add a new Guest to local variable and JSON file
+function addNewGuest(username, country, message) {
+  const newGuestObject = {
+    id: guests.length + 1,
+    username: username,
+    country: country,
+    date: Date(),
+    message: message
+  }
+  guests.push(newGuestObject);
+
+  const guestsString = JSON.stringify(guests);
+
+  fs.writeFile("guests.json", guestsString, (err) => {
+    if (err) throw err;
+    console.log("Guest has been saved!");
+  })
 }
