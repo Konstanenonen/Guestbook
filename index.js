@@ -40,12 +40,10 @@ app.post("/addMessage", (req, res) => {
     console.log("Guest has been saved!");
   })
 
-  res.send("Lisäsit uuden vieraan!");
+  res.send("New guest added!");
 })
 
-app.get("/ajaxmessage", (req, res) => {
-  res.send("Ajax Message sivu");
-})
+app.use("/ajaxmessage", express.static("./ajaxMessage"));
 
 app.listen(8000, () => {
   console.log("App is running on port 8000");
