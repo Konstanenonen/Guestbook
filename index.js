@@ -11,7 +11,7 @@ app.use(express.json());
 app.set("view engine", "ejs");
 
 app.get("/", (req, res) => {
-  res.send("Hei Maailma!");
+  res.render("pages/index.ejs");
 });
 
 app.get("/guestbook", (req, res) => {
