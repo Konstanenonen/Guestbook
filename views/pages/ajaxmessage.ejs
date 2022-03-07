@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ajax Message</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+  </head>
+  <style>
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+    }
+  </style>
+  <body>
+    <form method="POST" action="/addMessage">
+      <div class="form-group">
+        <label>
+          Name
+          <input type="text" class="form-control" id="name" name="name" />
+        </label>
+      </div>
+      <div class="form-group">
+        <label>
+          Country
+          <input type="text" class="form-control" id="country" name="country" />
+        </label>
+      </div>
+      <div class="form-group">
+        <label>
+          Message
+          <input type="text" class="form-control" id="message" name="message" />
+        </label>
+      </div>
+      <button type="button" id="ajax-button" class="btn btn-primary">
+        Add message
+      </button>
+    </form>
+    <div id="root"></div>
+    <script>
+      const ajaxButton = document.getElementById("ajax-button");
+
+      ajaxButton.addEventListener("click", () => {
+        const name = document.getElementById("name").value;
+        const country = document.getElementById("country").value;
+        const message = document.getElementById("message").value;
+        console.log(name, country, message);
+
+        const xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function () {
+          if (this.readyState == 4 && this.status == 200) {
+            document.getElementById("root").innerHTML = this.responseText;
+            console.log(this.responseText);
+          }
+        };
+
+        xmlhttp.open("POST", "/addMessage", true);
+        xmlhttp.setRequestHeader("Content-type", "application/json");
+
+        const userInput = {
+          name: name,
+          country: country,
+          message: message,
+        };
+
+        xmlhttp.send(JSON.stringify(userInput));
+      });
+    </script>
+  </body>
+</html>

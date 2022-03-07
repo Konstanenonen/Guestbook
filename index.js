@@ -12,15 +12,20 @@ app.set("view engine", "ejs");
 
 app.get("/", (req, res) => {
   res.send("Hei Maailma!");
-})
+});
 
-const table = makeTable;
-
-app.get("/guestbook", function(req, res) {
+app.get("/guestbook", (req, res) => {
+  const table = makeTable;
   res.render("pages/guestbook", {table: table});
-})
+});
 
-app.use("/newmessage", express.static("./newMessage"));
+app.get("/newmessage", (req, res) => {
+  res.render("pages/newmessage");
+});
+
+app.get("/ajaxmessage", (req, res) => {
+  res.render("pages/ajaxmessage");
+});
 
 app.post("/addMessage", (req, res) => {
   console.log(req.body);
@@ -42,8 +47,6 @@ app.post("/addMessage", (req, res) => {
 
   res.send(makeTable());
 })
-
-app.use("/ajaxmessage", express.static("./ajaxMessage"));
 
 app.listen(8000, () => {
   console.log("App is running on port 8000");
