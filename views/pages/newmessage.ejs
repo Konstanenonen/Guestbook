@@ -29,7 +29,7 @@
     align-items: center;
     gap: 20px;
   }
-  
+
   ul {
     width: 100%;
     padding-top: 15px;
@@ -52,6 +52,27 @@
     display: flex;
     align-items: center;
     justify-content: center;
+  }
+
+  @media screen and (max-width:768px) {
+  .tohide { 
+    display: none; 
+    }
+
+  .welcome-box {
+    margin: 0 10px;
+  }
+
+  h1 {
+    font-size: 30px;
+  }
+  h2 {
+    font-size: 18px;
+  }
+
+  ul {
+      flex-direction: column;
+    }
   }
 </style>
 <body>
