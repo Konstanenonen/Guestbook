@@ -1,0 +1,1 @@
+## Credit for the notebook picture goes to Pixabay.

@@ -21,6 +21,7 @@
   }
 
   body {
+    font-family: 'Courier New', Courier, monospace;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -51,6 +52,27 @@
     align-items: center;
     justify-content: center;
   }
+
+  h1 {
+    font-size: 50px;
+    font-weight: bolder;
+  }
+
+  h2 {
+    margin-top: 40px;
+    max-width: 1000px;
+  }
+
+  img {
+    border-radius: 10px;
+  }
+
+  .welcome-box {
+    border: solid 2px black;
+    background-color: rgb(212, 211, 211);
+    padding: 20px;
+    border-radius: 10px;
+  }
 </style>
 <body>
   <body>
@@ -64,7 +86,11 @@
         </ul>
       </nav>
     </header>
-    <h1>Etusivu</h1>
+    <img width="600" height="auto" alt="Empty notebook" src="https://images.pexels.com/photos/531844/pexels-photo-531844.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940">
+    <div class="welcome-box">
+      <h1>Welcome to the Guestbook App!</h1>
+      <h2>See other guests from Guestbook page or add yourself to the Guestbook trough New Message or New Ajax Message pages</h2>
+    </div>
     <footer>Made by Konsta Nenonen</footer>
   </body>
 </body>

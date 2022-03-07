@@ -95,7 +95,13 @@
         const name = document.getElementById("name").value;
         const country = document.getElementById("country").value;
         const message = document.getElementById("message").value;
+
         console.log(name, country, message);
+
+        if (name === "" || country === "" || message === "") {
+          document.getElementById("root").innerHTML = "<p style='color: red; font-weight: bold;'>Fill all the fields before submitting the form.</p>";
+          return;
+        }
 
         const xmlhttp = new XMLHttpRequest();
         xmlhttp.onreadystatechange = function () {
@@ -105,7 +111,7 @@
           }
         };
 
-        xmlhttp.open("POST", "/addMessage", true);
+        xmlhttp.open("POST", "/addAjaxMessage", true);
         xmlhttp.setRequestHeader("Content-type", "application/json");
 
         const userInput = {
