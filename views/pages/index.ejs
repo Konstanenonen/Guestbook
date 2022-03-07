@@ -29,8 +29,9 @@
     align-items: center;
     gap: 20px;
   }
+  
   ul {
-    width: 75%;
+    width: 100%;
     padding-top: 15px;
     list-style: none;
     display: flex;
@@ -41,7 +42,6 @@
   a {
     color: white;
     font-size: 20px;
-    margin-right: 75px;
   }
   header {
     width: 100%;
@@ -55,7 +55,7 @@
   }
 
   h1 {
-    font-size: 50px;
+    font-size: 40px;
     font-weight: bolder;
   }
 
@@ -76,6 +76,17 @@
     padding: 20px;
     border-radius: 10px;
   }
+
+  @media screen and (max-width:768px) {
+  .tohide { 
+    display: none; 
+    }
+
+  .welcome-box {
+    margin: 0 10px;
+  }
+  }
+
 </style>
 <body>
   <body>
@@ -89,7 +100,7 @@
         </ul>
       </nav>
     </header>
-    <img alt="Empty notebook" src="https://images.pexels.com/photos/531844/pexels-photo-531844.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940">
+    <img class="tohide" alt="Empty notebook" src="https://images.pexels.com/photos/531844/pexels-photo-531844.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940">
     <div class="welcome-box">
       <h1>Welcome to the Guestbook App!</h1>
       <h2>See other guests from Guestbook page or add yourself to the Guestbook trough New Message or New Ajax Message pages</h2>

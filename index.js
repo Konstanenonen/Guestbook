@@ -55,11 +55,11 @@ app.listen(PORT, () => {
 function makeTable() {
   const guests = require("./guests.json");
   const guestsFormat = guests.map(guest => (
-    `<tr><td>${guest.id}</td><td>${guest.username}</td><td>${guest.country}</td><td>${guest.date}</td><td>${guest.message}</td></tr>`
+    `<tr><td class="tohide">${guest.id}</td><td>${guest.username}</td><td>${guest.country}</td><td class="tohide">${guest.date}</td><td>${guest.message}</td></tr>`
   ))
   .reduce((prevValue, curValue) => prevValue + curValue);
 
-  return (`<table class="table"><thead class="thead-dark"><tr><th>ID</td><th>Name</th><th>Country</th><th>Date</th><th>Message</th></tr></thead><tbody>
+  return (`<table class="table"><thead class="thead-dark"><tr><th class="tohide">ID</td><th>Name</th><th>Country</th><th class="tohide">Date</th><th>Message</th></tr></thead><tbody>
   ${guestsFormat}
   </tbody></table>`);
 }
