@@ -28,6 +28,7 @@
     align-items: center;
     gap: 20px;
   }
+
   ul {
     width: 75%;
     padding-top: 15px;
@@ -47,9 +48,14 @@
   }
 
   nav {
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
+  }
+
+  .container {
+    max-width: 1000px;
   }
 </style>
 <body>
@@ -64,7 +70,9 @@
         </ul>
       </nav>
     </header>
-    <%- table() %>
+    <div class="container">
+      <%- table() %>
+    </div>
     <footer>Made by Konsta Nenonen</footer>
   </body>
 </html>

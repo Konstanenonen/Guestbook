@@ -51,6 +51,11 @@
     align-items: center;
     justify-content: center;
   }
+
+  .container {
+    max-width: 1000px;
+  }
+  
 </style>
 <body>
   <body>
@@ -87,7 +92,9 @@
         Add message
       </button>
     </form>
-    <div id="root"></div>
+    <div class="container">
+      <div id="root"></div>
+    </div>
     <script>
       const ajaxButton = document.getElementById("ajax-button");
 

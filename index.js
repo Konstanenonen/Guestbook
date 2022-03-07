@@ -36,7 +36,7 @@ app.get("/ajaxmessage", (req, res) => {
 // POST route for Ajax Message Page
 app.post("/addAjaxMessage", (req, res) => {
   const newGuestObject = {
-    id: guests.length,
+    id: guests.length + 1,
     username: req.body.name,
     country: req.body.country,
     date: Date(),
